@@ -1,0 +1,19 @@
+# Directory
+.DS_Store
+
+# File formats
+*csv
+*xlsx
+*log
+*txt
+
+# environment
+*env
+
+# cache
+__pycache__
+.ipynb_checkpoints
+.vscode
+
+# models
+*pkl
