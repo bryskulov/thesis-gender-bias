@@ -11,7 +11,6 @@ from gensim.models import KeyedVectors
 from gensim.scripts.glove2word2vec import glove2word2vec
 
 
-
 def load_KeyedVectors(path):
     tmp_file = get_tmpfile("tmp_word2vec_file.txt")
     _ = glove2word2vec(path, tmp_file)

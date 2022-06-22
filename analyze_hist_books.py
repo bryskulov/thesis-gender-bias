@@ -13,7 +13,6 @@ from calc_utils import calc_relative_norm_distance
 from word_groups.caliscan_words import *
 
 
-
 def align_vectors(years, in_dir, out_dir):
     first_iter = True
     base_embed = None
@@ -65,7 +64,6 @@ def calc_dist_in_directory(aligned_dir, male_word_list, female_word_list, list_o
     return computed_biases
     
 
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Computes gender bias for word embeddings and writes excel file to the current directory.")
     parser.add_argument("pretrained_dir", help="path to word vectors", default='data/pretrained_vectors/')
@@ -75,14 +73,12 @@ if __name__ == '__main__':
     parser.add_argument("--end-year", type=int, help="end year (inclusive)", default=2000)
     parser.add_argument("--disp-year", type=int, help="year to measure displacement from", default=1900)
     args = parser.parse_args()
-    years = [num for num in range(args.start_year, args.end_year + 1, args.year_inc)]
-    print(years)
 
+    years = [num for num in range(args.start_year, args.end_year + 1, args.year_inc)]
     align_vectors(years, args.pretrained_dir, args.aligned_dir)
 
     list_of_word_groups = [career, family, maths, arts, science, intelligence, appearance, strength, 
                        weakness, professions, professions2]
-
     computed_biases  = calc_dist_in_directory(args.aligned_dir, male_words, female_words, list_of_word_groups)
     computed_biases = computed_biases.reindex(sorted(computed_biases.columns), axis=1)
     computed_biases.to_excel('gender_bias_1900s_aligned.xlsx')
